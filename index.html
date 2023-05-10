@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Methods</title>
+
+    <script>
+
+        // EXAMPLE
+        let data = [
+            { firstName: 'Abdul', lastName: 'Manan', age: 22 },
+            { firstName: 'Ali', lastName: 'Haider', age: 25 },
+            { firstName: 'Abu', lastName: 'Huraira', age: 20 },
+            { firstName: 'Bilal', lastName: 'Ahmad', age: 22 },
+            { firstName: 'Salman', lastName: 'Ali', age: 18 },
+        ]
+
+
+        // Map method
+        let names = data.map((elem) => {
+            return elem.firstName + ' ' + elem.lastName
+        })
+        console.log('map => ', names);
+
+        // Filter method
+        let shortData = data.filter((elem) => {
+            return elem.age > 20
+        })
+        console.log('filter => ', shortData);
+
+        // Filter + Map method
+        let combineMethods = data.filter(elem => elem.age > 20).map(elem => elem.firstName)
+        console.log('filter + map => ', combineMethods);
+
+        // Reduce Method
+        let reduceData1 = data.reduce((accum, curElem) => {
+            if (accum[curElem.age]) {
+                accum[curElem.age] = ++accum[curElem.age]
+            }
+            else {
+                accum[curElem.age] = 1
+            }
+            return accum
+        }, {})
+        console.log(reduceData1);
+
+
+        // Alternate solution of (Filter + Map) Method with Reduce Method
+        let reduceData2 = data.reduce((accum, curElem) => {
+            if (curElem.age > 20) {
+                accum.push(curElem.firstName)
+            }
+            return accum
+        }, [])
+        console.log(reduceData2);
+
+    </script>
+
+</head>
+
+<body>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <h2>JavaScript Methods (Map, Filter, Reduce)</h2>
+        <p>(Go to console to check output)</p>
+    </div>
+
+</body>
+
+</html>
